@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Laravel</title>
+
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    </head>
+    <body>
+        <h2>Alpine:</h2>
+
+        <div x-data="{ open: false }">
+            <button @click="open = ! open">Toggle</button>
+
+            <div x-show="open" style="display: none">Contents...</div>
+        </div>
+
+        <hr />
+
+        <h2>Plain JS:</h2>
+        <div>
+            <button onclick="toggle()">Toggle</button>
+
+            <div id="contents" style="display: none">Contents...</div>
+        </div>
+
+        <hr />
+
+        <h2>jQuery:</h2>
+        <div>
+            <button id="jquery_toggle_button">Toggle</button>
+
+            <div id="jquery_contents" style="display: none">Contents...</div>
+        </div>
+
+        <script>
+            let open = false;
+
+            function toggle() {
+                open = !open;
+                document.getElementById('contents').style.display = open ? 'block' : 'none';
+            }
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script>
+            $(function(){
+                let open = false;
+
+                function toggle() {
+                    open = !open;
+                    $('#jquery_contents').toggle();
+                }
+
+                $('#jquery_toggle_button').click(function() {
+                    toggle();
+                })
+            });
+        </script>
+    </body>
+</html>
