@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Multi-Step Form with Tabs</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-100">
+<div class="font-sans text-gray-900 antialiased">
+    <div class="flex flex-col sm:justify-center items-center pt-5 pb-5">
+        <h2 class="font-bold text-2xl">Multi-Step Form</h2>
+
+        <div x-data="{ 
+            currentStep: 1
+        }" 
+        class="w-full sm:max-w-2xl mt-6 mb-6 px-6 py-8 bg-white shadow-md overflow-hidden sm:rounded-lg">
+            <div class="flex">
+                <button type="button" @click="currentStep = 1" class="border-indigo-500 p-2" :class="currentStep == 1 ? 'border border-b-0' : 'border-b'">Step 1</button>
+                <button type="button" @click="currentStep = 2" class="border-indigo-500 p-2" :class="currentStep == 2 ? 'border border-b-0' : 'border-b'">Step 2</button>
+                <button type="button" @click="currentStep = 3" class="border-indigo-500 p-2" :class="currentStep == 3 ? 'border border-b-0' : 'border-b'">Step 3</button>
+                <div class="border-b border-indigo-500 flex-grow"></div>
+            </div>
+            <form class="mt-2">
+                <div x-show="currentStep == 1">
+                    <div>
+                        <label for="first_name" class="block text-black-500 mt-3">First name</label>
+                        <input type="text" name="first_name" class="mt-2 w-full border rounded-md p-1 focus:outline-none" />
+                    </div>
+                    <div>
+                        <label for="last_name" class="block text-black-500 mt-3">Last name</label>
+                        <input type="text" name="last_name" class="mt-2 w-full border rounded-md p-1 focus:outline-none" />
+                    </div>
+                </div>
+                <div x-show="currentStep == 2">
+                    <div>
+                        <label for="address" class="block text-black-500 mt-3">Address</label>
+                        <input type="text" name="address" class="mt-2 w-full border rounded-md p-1 focus:outline-none" />
+                    </div>
+                    <div>
+                        <label for="city" class="block text-black-500 mt-3">City</label>
+                        <input type="text" name="city" class="mt-2 w-full border rounded-md p-1 focus:outline-none" />
+                    </div>
+                </div>
+                <div x-show="currentStep == 3">
+                    <div>
+                        <label for="country" class="block text-black-500 mt-3">Country</label>
+                        <input type="text" name="country" class="mt-2 w-full border rounded-md p-1 focus:outline-none border-indigo-500" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" x-show="currentStep < 3" @click="currentStep++" class="h-full mt-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
+                        Next
+                    </button>
+                    <button type="submit" x-show="currentStep == 3" class="h-full mt-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
+                        Submit Form
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
