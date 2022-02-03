@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Add to Cart</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-100">
+<div class="font-sans text-gray-900 antialiased">
+    <div class="flex flex-col sm:justify-center items-center pt-5 pb-5">
+        <h2 class="font-bold text-2xl">Add to Cart</h2>
+
+        <div class="w-full sm:max-w-2xl mt-6 mb-6 px-6 py-8 bg-white shadow-md overflow-hidden sm:rounded-lg">
+
+            <div x-data="{ cartItems: 0 }"
+                 @cart-changed.window="cartItems += $event.detail.change"
+                 class="mb-4 px-4 py-3 leading-normal text-blue-700 bg-blue-100 rounded-lg text-right" role="alert">
+                Cart (<span x-text="cartItems"></span>)
+            </div>
+
+            <div x-data="{
+                 cartProducts: [],
+                 addToCart(productId) {
+                   this.cartProducts.push(productId);
+                   $dispatch('cart-changed', { change: 1 });
+                 },
+                 removeFromCart(productId) {
+                   let index = this.cartProducts.indexOf(productId);
+                   if (index !== -1) {
+                     this.cartProducts.splice(index, 1);
+                   }
+                   $dispatch('cart-changed', { change: -1 });
+                 }
+             }"
+                 class="w-full sm:max-w-2xl mt-6 mb-6 px-6 py-8 bg-white shadow-md overflow-hidden sm:rounded-lg">
+
+                <table class="table min-w-full">
+                    <thead>
+                    <tr>
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">
+                            Name
+                        </th>
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">
+                            Price
+                        </th>
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5">
+                            LEGO
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5">
+                            $19.99
+                        </td>
+                        <td class="text-right px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5">
+                            <button x-show="!cartProducts.includes(1)" @click="addToCart(1)"
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                Add to Cart
+                            </button>
+                            <button x-show="cartProducts.includes(1)" @click="removeFromCart(1)"
+                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                Remove from Cart
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5">
+                            Barbie
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5">
+                            $29.99
+                        </td>
+                        <td class="text-right px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5">
+                            <button x-show="!cartProducts.includes(2)" @click="addToCart(2)"
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                Add to Cart
+                            </button>
+                            <button x-show="cartProducts.includes(2)" @click="removeFromCart(2)"
+                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                Remove from Cart
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
