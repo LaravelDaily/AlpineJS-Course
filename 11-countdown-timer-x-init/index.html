@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Countdown Timer</title>
+
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+<div class="font-sans text-gray-900 antialiased">
+    <div class="flex flex-col sm:justify-center items-center pt-5 pb-5">
+        <h2 class="font-bold text-2xl">Countdown Timer</h2>
+
+        <div x-data="{ secondsLeft: 10 }"
+             x-init="window.setInterval(() => { if(secondsLeft > 0) secondsLeft = secondsLeft - 1; }, 1000)"
+             class="w-full text-center sm:max-w-2xl mt-6 mb-6 px-6 py-8 bg-white shadow-md overflow-hidden sm:rounded-lg">
+            <div x-show="secondsLeft > 0">
+                Seconds left:
+                <div x-text="secondsLeft" class="text-2xl"></div>
+            </div>
+            <div x-show="secondsLeft == 0">
+                Time's up!
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
