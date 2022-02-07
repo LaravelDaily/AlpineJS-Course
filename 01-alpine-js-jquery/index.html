@@ -12,9 +12,9 @@
         <h2>Alpine:</h2>
 
         <div x-data="{ open: false }">
-            <button @click="open = ! open">Toggle</button>
+            <button @click="open = !open">Toggle</button>
 
-            <div x-show="open" style="display: none">Contents...</div>
+            <div x-show="open">Contents...</div>
         </div>
 
         <hr />
