@@ -18,17 +18,19 @@
             name: '',
             description: '',
             price: 0,
-            filled() {
-                let filled = 0;
-                if (this.name != '') filled++;
-                if (this.description != '') filled++;
-                if (this.price > 0) filled++;
+            filledFields: 0,
+            filledText() {
+                this.filledFields = 0;
+                if (this.name != '') this.filledFields++;
+                if (this.description != '') this.filledFields++;
+                if (this.price > 0) this.filledFields++;
 
-                if (filled == 3) {
+                if (this.filledFields == 3) {
                     $refs.progress.remove();
                 }
-                return filled;
-            }
+
+                return this.filledFields;
+            },
         }" class="w-full sm:max-w-2xl mt-6 mb-6 px-6 py-8 bg-white shadow-md overflow-hidden sm:rounded-lg">
             <form>
                 <div>
@@ -53,8 +55,8 @@
                            class="mt-2 text-sm sm:text-base pl-2 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" />
                 </div>
                 <div class="mt-4" x-ref="progress">
-                    <progress x-bind:value="filled / 3" class="w-full"></progress>
-                    <div><span x-text="filled"></span> / 3</div>
+                    <progress x-bind:value="filledFields / 3" class="w-full"></progress>
+                    <div><span x-text="filledText"></span> / 3</div>
                 </div>
                 <div class="flex items-center mt-4">
                     <button type="submit"
