@@ -20,13 +20,18 @@
                 <button @click="open = ! open" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Toggle</button>
 
                 <div x-show="open"
-                     x-transition:enter="transition ease-out duration-300"
+                     x-transition
+                     >Content 1...
+                </div>
+
+                <div x-show="open"
+                     x-transition:enter="transition ease-out duration-1000"
                      x-transition:enter-start="opacity-0 scale-90"
                      x-transition:enter-end="opacity-100 scale-100"
-                     x-transition:leave="transition ease-in duration-300"
+                     x-transition:leave="transition ease-in duration-1000"
                      x-transition:leave-start="opacity-100 scale-100"
                      x-transition:leave-end="opacity-0 scale-90"
-                     >Contents...
+                     >Content 2...
                 </div>
             </div>
         </div>
