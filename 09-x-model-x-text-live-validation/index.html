@@ -25,7 +25,7 @@
                     </label>
                     <input type="text" x-model="name" name="name" maxlength="50"
                            class="mt-2 text-sm sm:text-base pl-2 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" />
-                    <div x-text="`${name.length} / 50`" class="text-sm text-red-500 ml-1"></div>
+                    <div class="text-sm text-red-500 ml-1"><span x-text="name.length" ></span> / 50</div>
                 </div>
                 <div class="mt-4">
                     <label class="block font-medium text-sm text-gray-700" for="description">
