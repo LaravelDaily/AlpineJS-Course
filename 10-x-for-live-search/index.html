@@ -24,9 +24,9 @@
         <div x-data="{
             search: '',
             users: [
-                { name: 'First user', 'email': 'abc@email.com' },
-                { name: 'Second user', 'email': 'def@email.com' },
-                { name: 'Third user', 'email': 'ghi@email.com' },
+                { name: 'First user', email: 'abc@email.com' },
+                { name: 'Second user', email: 'def@email.com' },
+                { name: 'Third user', email: 'ghi@email.com' },
             ],
             filteredUsers() {
                 return this.users.filter((user) => {
