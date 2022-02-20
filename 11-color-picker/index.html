@@ -35,8 +35,8 @@
                         </div>
                         <div class="mt-2">
                             <button type="button"
-                                    :class="colorClass"
                                     class="h-full inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150"
+                                    :class="colorClass"
                                     @click="pickerOpen = true">
                             </button>
                         </div>
@@ -47,8 +47,8 @@
                                 <div class="flex">
                                     <template x-for="pickColor in colors">
                                         <div @click="color = pickColor; pickerOpen = false"
-                                             :class="`bg-${pickColor}-800`"
-                                             class="cursor-pointer w-6 h-4 rounded-full mx-1 my-1"></div>
+                                             class="cursor-pointer w-6 h-4 rounded-full mx-1 my-1"
+                                             :class="`bg-${pickColor}-800`"></div>
                                     </template>
                                 </div>
                             </div>
